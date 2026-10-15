@@ -1,0 +1,725 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/15/2026 12:27:56 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-LV7URAU"
+  DTS:CreatorName="DESKTOP-LV7URAU\jairo"
+  DTS:DTSID="{8295FB5F-63F4-4E71-B985-83F9F1702345}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.180"
+  DTS:LocaleID="13322"
+  DTS:ObjectName="Load_DimCliente"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{E3E76E08-4F0A-4ED5-874D-F259003F89B6}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Cargar DimCliente"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{7A386DEF-7E8B-4F7E-BAD5-00A4CC6E6E6A}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Cargar DimCliente"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Cargar DimCliente\Destino de OLE DB"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="Destino de OLE DB"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[DimCliente]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Cargar DimCliente\Destino de OLE DB.Connections[OleDbConnection]"
+                  connectionManagerID="{5C39BE6F-5E18-4A49-ADE6-C077FF433CBF}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-LV7URAU.BikeZ_DW]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Cargar DimCliente\Destino de OLE DB.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Cargar DimCliente\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[ClienteID]"
+                      cachedDataType="i4"
+                      cachedName="ClienteID"
+                      externalMetadataColumnId="Package\Cargar DimCliente\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[ClienteID]"
+                      lineageId="Package\Cargar DimCliente\Origen Cliente.Outputs[Salida de origen de OLE DB].Columns[ClienteID]" />
+                    <inputColumn
+                      refId="Package\Cargar DimCliente\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[NombreCompleto]"
+                      cachedDataType="wstr"
+                      cachedLength="101"
+                      cachedName="NombreCompleto"
+                      externalMetadataColumnId="Package\Cargar DimCliente\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[NombreCompleto]"
+                      lineageId="Package\Cargar DimCliente\Generar nombre y tipo de cliente.Outputs[Salida de columna derivada].Columns[NombreCompleto]" />
+                    <inputColumn
+                      refId="Package\Cargar DimCliente\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[TipoCliente]"
+                      cachedDataType="wstr"
+                      cachedLength="21"
+                      cachedName="TipoCliente"
+                      externalMetadataColumnId="Package\Cargar DimCliente\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[TipoCliente]"
+                      lineageId="Package\Cargar DimCliente\Generar nombre y tipo de cliente.Outputs[Salida de columna derivada].Columns[TipoCliente]" />
+                    <inputColumn
+                      refId="Package\Cargar DimCliente\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[NombreLimpio]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="NombreLimpio"
+                      externalMetadataColumnId="Package\Cargar DimCliente\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Nombre]"
+                      lineageId="Package\Cargar DimCliente\Generar nombre y tipo de cliente.Outputs[Salida de columna derivada].Columns[NombreLimpio]" />
+                    <inputColumn
+                      refId="Package\Cargar DimCliente\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[ApellidoLimpio]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ApellidoLimpio"
+                      externalMetadataColumnId="Package\Cargar DimCliente\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Apellido]"
+                      lineageId="Package\Cargar DimCliente\Generar nombre y tipo de cliente.Outputs[Salida de columna derivada].Columns[ApellidoLimpio]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Cargar DimCliente\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[ClienteKey]"
+                      dataType="i4"
+                      name="ClienteKey" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar DimCliente\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[ClienteID]"
+                      dataType="i4"
+                      name="ClienteID" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar DimCliente\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Nombre]"
+                      dataType="wstr"
+                      length="100"
+                      name="Nombre" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar DimCliente\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Apellido]"
+                      dataType="wstr"
+                      length="100"
+                      name="Apellido" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar DimCliente\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[NombreCompleto]"
+                      dataType="wstr"
+                      length="250"
+                      name="NombreCompleto" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar DimCliente\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[TipoCliente]"
+                      dataType="wstr"
+                      length="30"
+                      name="TipoCliente" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Cargar DimCliente\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\Cargar DimCliente\Destino de OLE DB.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargar DimCliente\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Cargar DimCliente\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Cargar DimCliente\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Cargar DimCliente\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Cargar DimCliente\Generar nombre y tipo de cliente"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Columna derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Crea nuevos valores de columna aplicando expresiones a las columnas de entrada de la transformación. Crea nuevas columnas o sobrescribe las columnas existentes. Por ejemplo, se concatenan los valores de las columnas 'nombre' y 'apellidos' para crear una columna 'nombre completo'."
+              name="Generar nombre y tipo de cliente"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Cargar DimCliente\Generar nombre y tipo de cliente.Inputs[Entrada de columna derivada]"
+                  description="Entrada en la transformación Columna derivada"
+                  name="Entrada de columna derivada">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Cargar DimCliente\Generar nombre y tipo de cliente.Inputs[Entrada de columna derivada].Columns[ClienteID]"
+                      cachedDataType="i4"
+                      cachedName="ClienteID"
+                      lineageId="Package\Cargar DimCliente\Origen Cliente.Outputs[Salida de origen de OLE DB].Columns[ClienteID]" />
+                    <inputColumn
+                      refId="Package\Cargar DimCliente\Generar nombre y tipo de cliente.Inputs[Entrada de columna derivada].Columns[Nombre]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Nombre"
+                      lineageId="Package\Cargar DimCliente\Origen Cliente.Outputs[Salida de origen de OLE DB].Columns[Nombre]" />
+                    <inputColumn
+                      refId="Package\Cargar DimCliente\Generar nombre y tipo de cliente.Inputs[Entrada de columna derivada].Columns[Apellido]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Apellido"
+                      lineageId="Package\Cargar DimCliente\Origen Cliente.Outputs[Salida de origen de OLE DB].Columns[Apellido]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Cargar DimCliente\Generar nombre y tipo de cliente.Outputs[Salida de columna derivada]"
+                  description="Salida predeterminada de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  name="Salida de columna derivada"
+                  synchronousInputId="Package\Cargar DimCliente\Generar nombre y tipo de cliente.Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargar DimCliente\Generar nombre y tipo de cliente.Outputs[Salida de columna derivada].Columns[NombreLimpio]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Cargar DimCliente\Generar nombre y tipo de cliente.Outputs[Salida de columna derivada].Columns[NombreLimpio]"
+                      name="NombreLimpio"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">[ISNULL](#{Package\Cargar DimCliente\Origen Cliente.Outputs[Salida de origen de OLE DB].Columns[Nombre]}) ? "Sin nombre" : [TRIM](#{Package\Cargar DimCliente\Origen Cliente.Outputs[Salida de origen de OLE DB].Columns[Nombre]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(Nombre) ? "Sin nombre" : TRIM(Nombre)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Cargar DimCliente\Generar nombre y tipo de cliente.Outputs[Salida de columna derivada].Columns[ApellidoLimpio]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Cargar DimCliente\Generar nombre y tipo de cliente.Outputs[Salida de columna derivada].Columns[ApellidoLimpio]"
+                      name="ApellidoLimpio"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">[ISNULL](#{Package\Cargar DimCliente\Origen Cliente.Outputs[Salida de origen de OLE DB].Columns[Apellido]}) ? "Sin apellido" : [TRIM](#{Package\Cargar DimCliente\Origen Cliente.Outputs[Salida de origen de OLE DB].Columns[Apellido]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(Apellido) ? "Sin apellido" : TRIM(Apellido)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Cargar DimCliente\Generar nombre y tipo de cliente.Outputs[Salida de columna derivada].Columns[NombreCompleto]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      length="101"
+                      lineageId="Package\Cargar DimCliente\Generar nombre y tipo de cliente.Outputs[Salida de columna derivada].Columns[NombreCompleto]"
+                      name="NombreCompleto"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">[ISNULL](#{Package\Cargar DimCliente\Origen Cliente.Outputs[Salida de origen de OLE DB].Columns[Nombre]}) ? ("Cliente sin nombre (ID " + (DT_WSTR,10)#{Package\Cargar DimCliente\Origen Cliente.Outputs[Salida de origen de OLE DB].Columns[ClienteID]} + ")") : ([TRIM](#{Package\Cargar DimCliente\Origen Cliente.Outputs[Salida de origen de OLE DB].Columns[Nombre]}) + " " + ([ISNULL](#{Package\Cargar DimCliente\Origen Cliente.Outputs[Salida de origen de OLE DB].Columns[Apellido]}) ? "" : [TRIM](#{Package\Cargar DimCliente\Origen Cliente.Outputs[Salida de origen de OLE DB].Columns[Apellido]})))</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(Nombre) ? ("Cliente sin nombre (ID " + (DT_WSTR,10)ClienteID + ")") : (TRIM(Nombre) + " " + (ISNULL(Apellido) ? "" : TRIM(Apellido)))</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Cargar DimCliente\Generar nombre y tipo de cliente.Outputs[Salida de columna derivada].Columns[TipoCliente]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      length="21"
+                      lineageId="Package\Cargar DimCliente\Generar nombre y tipo de cliente.Outputs[Salida de columna derivada].Columns[TipoCliente]"
+                      name="TipoCliente"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">[ISNULL](#{Package\Cargar DimCliente\Origen Cliente.Outputs[Salida de origen de OLE DB].Columns[Nombre]}) ? "Sin nombre registrado" : "Nombre registrado"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(Nombre) ? "Sin nombre registrado" : "Nombre registrado"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Cargar DimCliente\Generar nombre y tipo de cliente.Outputs[Salida de error de columna derivada]"
+                  description="Salida de error de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de columna derivada"
+                  synchronousInputId="Package\Cargar DimCliente\Generar nombre y tipo de cliente.Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargar DimCliente\Generar nombre y tipo de cliente.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Cargar DimCliente\Generar nombre y tipo de cliente.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Cargar DimCliente\Generar nombre y tipo de cliente.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Cargar DimCliente\Generar nombre y tipo de cliente.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Cargar DimCliente\Origen Cliente"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+              description="Origen de OLE DB"
+              name="Origen Cliente"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+    ClienteID,
+    Nombre,
+    Apellido
+FROM dbo.Clientes;</property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Asignaciones entre los parámetros del comando SQL y las variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Cargar DimCliente\Origen Cliente.Connections[OleDbConnection]"
+                  connectionManagerID="{2EA4C284-48AC-4180-A7F7-EA6580EDBEEE}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-LV7URAU.BikeZ]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Cargar DimCliente\Origen Cliente.Outputs[Salida de origen de OLE DB]"
+                  name="Salida de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargar DimCliente\Origen Cliente.Outputs[Salida de origen de OLE DB].Columns[ClienteID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cargar DimCliente\Origen Cliente.Outputs[Salida de origen de OLE DB].ExternalColumns[ClienteID]"
+                      lineageId="Package\Cargar DimCliente\Origen Cliente.Outputs[Salida de origen de OLE DB].Columns[ClienteID]"
+                      name="ClienteID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cargar DimCliente\Origen Cliente.Outputs[Salida de origen de OLE DB].Columns[Nombre]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cargar DimCliente\Origen Cliente.Outputs[Salida de origen de OLE DB].ExternalColumns[Nombre]"
+                      length="50"
+                      lineageId="Package\Cargar DimCliente\Origen Cliente.Outputs[Salida de origen de OLE DB].Columns[Nombre]"
+                      name="Nombre"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cargar DimCliente\Origen Cliente.Outputs[Salida de origen de OLE DB].Columns[Apellido]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cargar DimCliente\Origen Cliente.Outputs[Salida de origen de OLE DB].ExternalColumns[Apellido]"
+                      length="50"
+                      lineageId="Package\Cargar DimCliente\Origen Cliente.Outputs[Salida de origen de OLE DB].Columns[Apellido]"
+                      name="Apellido"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Cargar DimCliente\Origen Cliente.Outputs[Salida de origen de OLE DB].ExternalColumns[ClienteID]"
+                      dataType="i4"
+                      name="ClienteID" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar DimCliente\Origen Cliente.Outputs[Salida de origen de OLE DB].ExternalColumns[Nombre]"
+                      dataType="wstr"
+                      length="50"
+                      name="Nombre" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar DimCliente\Origen Cliente.Outputs[Salida de origen de OLE DB].ExternalColumns[Apellido]"
+                      dataType="wstr"
+                      length="50"
+                      name="Apellido" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Cargar DimCliente\Origen Cliente.Outputs[Salida de error de origen de OLE DB]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargar DimCliente\Origen Cliente.Outputs[Salida de error de origen de OLE DB].Columns[ClienteID]"
+                      dataType="i4"
+                      lineageId="Package\Cargar DimCliente\Origen Cliente.Outputs[Salida de error de origen de OLE DB].Columns[ClienteID]"
+                      name="ClienteID" />
+                    <outputColumn
+                      refId="Package\Cargar DimCliente\Origen Cliente.Outputs[Salida de error de origen de OLE DB].Columns[Nombre]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Cargar DimCliente\Origen Cliente.Outputs[Salida de error de origen de OLE DB].Columns[Nombre]"
+                      name="Nombre" />
+                    <outputColumn
+                      refId="Package\Cargar DimCliente\Origen Cliente.Outputs[Salida de error de origen de OLE DB].Columns[Apellido]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Cargar DimCliente\Origen Cliente.Outputs[Salida de error de origen de OLE DB].Columns[Apellido]"
+                      name="Apellido" />
+                    <outputColumn
+                      refId="Package\Cargar DimCliente\Origen Cliente.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Cargar DimCliente\Origen Cliente.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Cargar DimCliente\Origen Cliente.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Cargar DimCliente\Origen Cliente.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Cargar DimCliente.Paths[Salida de columna derivada]"
+              endId="Package\Cargar DimCliente\Destino de OLE DB.Inputs[Entrada de destino de OLE DB]"
+              name="Salida de columna derivada"
+              startId="Package\Cargar DimCliente\Generar nombre y tipo de cliente.Outputs[Salida de columna derivada]" />
+            <path
+              refId="Package\Cargar DimCliente.Paths[Salida de origen de OLE DB]"
+              endId="Package\Cargar DimCliente\Generar nombre y tipo de cliente.Inputs[Entrada de columna derivada]"
+              name="Salida de origen de OLE DB"
+              startId="Package\Cargar DimCliente\Origen Cliente.Outputs[Salida de origen de OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Limpiar DimCliente"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{5288203A-1FD9-4BB6-A202-1C825841430A}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Limpiar DimCliente"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{5C39BE6F-5E18-4A49-ADE6-C077FF433CBF}"
+          SQLTask:SqlStatementSource="DELETE FROM dbo.DimCliente WHERE ClienteKey &lt;&gt; -1;&#xA;DBCC CHECKIDENT ('dbo.DimCliente', RESEED, 0);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción]"
+      DTS:CreationName=""
+      DTS:DTSID="{6033C31E-C9F6-4F7E-AAB9-2AED5460CA21}"
+      DTS:From="Package\Limpiar DimCliente"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción"
+      DTS:To="Package\Cargar DimCliente" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<Objects
+  Version="8">
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="172,42"
+          Id="Package\Limpiar DimCliente"
+          TopLeft="162,95" />
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Cargar DimCliente"
+          TopLeft="291,206" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción]"
+          TopLeft="248,137">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="128,69"
+              Start="0,0"
+              End="128,61.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.5"
+                    Point2="0,34.5"
+                    Point3="4,34.5" />
+                  <mssgle:LineSegment
+                    End="124,34.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="124,34.5"
+                    Point2="128,34.5"
+                    Point3="128,38.5" />
+                  <mssgle:LineSegment
+                    End="128,61.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Cargar DimCliente">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="149,42"
+          Id="Package\Cargar DimCliente\Origen Cliente"
+          TopLeft="176,52" />
+        <NodeLayout
+          Size="175,42"
+          Id="Package\Cargar DimCliente\Destino de OLE DB"
+          TopLeft="294,268" />
+        <NodeLayout
+          Size="239,42"
+          Id="Package\Cargar DimCliente\Generar nombre y tipo de cliente"
+          TopLeft="309,164" />
+        <EdgeLayout
+          Id="Package\Cargar DimCliente.Paths[Salida de origen de OLE DB]"
+          TopLeft="250.5,94">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="178,70"
+              Start="0,0"
+              End="178,62.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31"
+                    Point2="0,35"
+                    Point3="4,35" />
+                  <mssgle:LineSegment
+                    End="174,35" />
+                  <mssgle:CubicBezierSegment
+                    Point1="174,35"
+                    Point2="178,35"
+                    Point3="178,39" />
+                  <mssgle:LineSegment
+                    End="178,62.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar DimCliente.Paths[Salida de columna derivada]"
+          TopLeft="428.5,206">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-47,62"
+              Start="0,0"
+              End="-47,54.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27"
+                    Point2="0,31"
+                    Point3="-4,31" />
+                  <mssgle:LineSegment
+                    End="-43,31" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-43,31"
+                    Point2="-47,31"
+                    Point3="-47,35" />
+                  <mssgle:LineSegment
+                    End="-47,54.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Cargar DimCliente\Origen Cliente">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Cargar DimCliente\Destino de OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
