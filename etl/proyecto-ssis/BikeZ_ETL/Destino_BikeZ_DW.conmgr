@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="DESKTOP-LV7URAU.BikeZ_DW"
+  DTS:DTSID="{5C39BE6F-5E18-4A49-ADE6-C077FF433CBF}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=DESKTOP-LV7URAU;Initial Catalog=BikeZ_DW;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-BikeZ_ETL-{5C39BE6F-5E18-4A49-ADE6-C077FF433CBF}DESKTOP-LV7URAU.BikeZ_DW;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
