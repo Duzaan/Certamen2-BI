@@ -12,8 +12,8 @@
   DTS:ObjectName="Package"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="6"
-  DTS:VersionGUID="{CED70F94-2124-46DC-BEAD-7F8B38429DDB}">
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{F82F939D-3853-4CAD-9AE4-6F84110AAD21}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -558,37 +558,37 @@ LEFT JOIN dbo.Categorias c ON c.CategoriaID = p.CategoriaID;</property>
         <NodeLayout
           Size="179,42"
           Id="Package\Cargar DimProducto"
-          TopLeft="195,193" />
+          TopLeft="244,193" />
         <NodeLayout
           Size="182,42"
           Id="Package\Limpiar DimProducto"
-          TopLeft="139,72" />
+          TopLeft="191,73" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="230,114">
+          TopLeft="282,115">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="54.5,79"
+              EndConnector="51.5,78"
               Start="0,0"
-              End="54.5,71.5">
+              End="51.5,70.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,35.5" />
+                    End="0,35" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,35.5"
-                    Point2="0,39.5"
-                    Point3="4,39.5" />
+                    Point1="0,35"
+                    Point2="0,39"
+                    Point3="4,39" />
                   <mssgle:LineSegment
-                    End="50.5,39.5" />
+                    End="47.5,39" />
                   <mssgle:CubicBezierSegment
-                    Point1="50.5,39.5"
-                    Point2="54.5,39.5"
-                    Point3="54.5,43.5" />
+                    Point1="47.5,39"
+                    Point2="51.5,39"
+                    Point3="51.5,43" />
                   <mssgle:LineSegment
-                    End="54.5,71.5" />
+                    End="51.5,70.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -604,7 +604,7 @@ LEFT JOIN dbo.Categorias c ON c.CategoriaID = p.CategoriaID;</property>
     design-time-name="Package\Cargar DimProducto">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="183,42"
           Id="Package\Cargar DimProducto\Destino DimProducto"
@@ -648,7 +648,9 @@ LEFT JOIN dbo.Categorias c ON c.CategoriaID = p.CategoriaID;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-59,35,16,16"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -682,7 +684,9 @@ LEFT JOIN dbo.Categorias c ON c.CategoriaID = p.CategoriaID;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-26,28,16,16"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

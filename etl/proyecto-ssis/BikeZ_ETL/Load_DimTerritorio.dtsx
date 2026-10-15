@@ -1,0 +1,714 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/14/2026 11:54:49 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-LV7URAU"
+  DTS:CreatorName="DESKTOP-LV7URAU\jairo"
+  DTS:DTSID="{1806240F-53F1-452C-81D8-D2AB341BE400}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.180"
+  DTS:LocaleID="13322"
+  DTS:ObjectName="Load_DimTerritorio"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{9E851C25-8D47-4747-8937-695374603423}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Cargar DimTerritorio"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{67604373-C278-47FE-8ED0-AA92E0DC5B38}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Cargar DimTerritorio"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Cargar DimTerritorio\Corregir nulos y espacios"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Columna derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Crea nuevos valores de columna aplicando expresiones a las columnas de entrada de la transformación. Crea nuevas columnas o sobrescribe las columnas existentes. Por ejemplo, se concatenan los valores de las columnas 'nombre' y 'apellidos' para crear una columna 'nombre completo'."
+              name="Corregir nulos y espacios"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Cargar DimTerritorio\Corregir nulos y espacios.Inputs[Entrada de columna derivada]"
+                  description="Entrada en la transformación Columna derivada"
+                  name="Entrada de columna derivada">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Cargar DimTerritorio\Corregir nulos y espacios.Inputs[Entrada de columna derivada].Columns[Territorio]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Territorio"
+                      lineageId="Package\Cargar DimTerritorio\Origen Territorios.Outputs[Salida de origen de OLE DB].Columns[Territorio]" />
+                    <inputColumn
+                      refId="Package\Cargar DimTerritorio\Corregir nulos y espacios.Inputs[Entrada de columna derivada].Columns[Pais]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Pais"
+                      lineageId="Package\Cargar DimTerritorio\Origen Territorios.Outputs[Salida de origen de OLE DB].Columns[Pais]" />
+                    <inputColumn
+                      refId="Package\Cargar DimTerritorio\Corregir nulos y espacios.Inputs[Entrada de columna derivada].Columns[Grupo]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Grupo"
+                      lineageId="Package\Cargar DimTerritorio\Origen Territorios.Outputs[Salida de origen de OLE DB].Columns[Grupo]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Cargar DimTerritorio\Corregir nulos y espacios.Outputs[Salida de columna derivada]"
+                  description="Salida predeterminada de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  name="Salida de columna derivada"
+                  synchronousInputId="Package\Cargar DimTerritorio\Corregir nulos y espacios.Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargar DimTerritorio\Corregir nulos y espacios.Outputs[Salida de columna derivada].Columns[TerritorioLimpio]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Cargar DimTerritorio\Corregir nulos y espacios.Outputs[Salida de columna derivada].Columns[TerritorioLimpio]"
+                      name="TerritorioLimpio"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">[TRIM](#{Package\Cargar DimTerritorio\Origen Territorios.Outputs[Salida de origen de OLE DB].Columns[Territorio]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">TRIM(Territorio)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Cargar DimTerritorio\Corregir nulos y espacios.Outputs[Salida de columna derivada].Columns[PaisLimpio]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Cargar DimTerritorio\Corregir nulos y espacios.Outputs[Salida de columna derivada].Columns[PaisLimpio]"
+                      name="PaisLimpio"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">[ISNULL](#{Package\Cargar DimTerritorio\Origen Territorios.Outputs[Salida de origen de OLE DB].Columns[Pais]}) ? "Sin información" : [TRIM](#{Package\Cargar DimTerritorio\Origen Territorios.Outputs[Salida de origen de OLE DB].Columns[Pais]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(Pais) ? "Sin información" : TRIM(Pais)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Cargar DimTerritorio\Corregir nulos y espacios.Outputs[Salida de columna derivada].Columns[GrupoLimpio]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Cargar DimTerritorio\Corregir nulos y espacios.Outputs[Salida de columna derivada].Columns[GrupoLimpio]"
+                      name="GrupoLimpio"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">[ISNULL](#{Package\Cargar DimTerritorio\Origen Territorios.Outputs[Salida de origen de OLE DB].Columns[Grupo]}) ? "Sin información" : [TRIM](#{Package\Cargar DimTerritorio\Origen Territorios.Outputs[Salida de origen de OLE DB].Columns[Grupo]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(Grupo) ? "Sin información" : TRIM(Grupo)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Cargar DimTerritorio\Corregir nulos y espacios.Outputs[Salida de error de columna derivada]"
+                  description="Salida de error de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de columna derivada"
+                  synchronousInputId="Package\Cargar DimTerritorio\Corregir nulos y espacios.Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargar DimTerritorio\Corregir nulos y espacios.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Cargar DimTerritorio\Corregir nulos y espacios.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Cargar DimTerritorio\Corregir nulos y espacios.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Cargar DimTerritorio\Corregir nulos y espacios.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Cargar DimTerritorio\Destino DimTerritorio"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="Destino DimTerritorio"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[DimTerritorio]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Cargar DimTerritorio\Destino DimTerritorio.Connections[OleDbConnection]"
+                  connectionManagerID="{5C39BE6F-5E18-4A49-ADE6-C077FF433CBF}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-LV7URAU.BikeZ_DW]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Cargar DimTerritorio\Destino DimTerritorio.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Cargar DimTerritorio\Destino DimTerritorio.Inputs[Entrada de destino de OLE DB].Columns[TerritorioID]"
+                      cachedDataType="i4"
+                      cachedName="TerritorioID"
+                      externalMetadataColumnId="Package\Cargar DimTerritorio\Destino DimTerritorio.Inputs[Entrada de destino de OLE DB].ExternalColumns[TerritorioID]"
+                      lineageId="Package\Cargar DimTerritorio\Origen Territorios.Outputs[Salida de origen de OLE DB].Columns[TerritorioID]" />
+                    <inputColumn
+                      refId="Package\Cargar DimTerritorio\Destino DimTerritorio.Inputs[Entrada de destino de OLE DB].Columns[TerritorioLimpio]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="TerritorioLimpio"
+                      externalMetadataColumnId="Package\Cargar DimTerritorio\Destino DimTerritorio.Inputs[Entrada de destino de OLE DB].ExternalColumns[Territorio]"
+                      lineageId="Package\Cargar DimTerritorio\Corregir nulos y espacios.Outputs[Salida de columna derivada].Columns[TerritorioLimpio]" />
+                    <inputColumn
+                      refId="Package\Cargar DimTerritorio\Destino DimTerritorio.Inputs[Entrada de destino de OLE DB].Columns[PaisLimpio]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="PaisLimpio"
+                      externalMetadataColumnId="Package\Cargar DimTerritorio\Destino DimTerritorio.Inputs[Entrada de destino de OLE DB].ExternalColumns[Pais]"
+                      lineageId="Package\Cargar DimTerritorio\Corregir nulos y espacios.Outputs[Salida de columna derivada].Columns[PaisLimpio]" />
+                    <inputColumn
+                      refId="Package\Cargar DimTerritorio\Destino DimTerritorio.Inputs[Entrada de destino de OLE DB].Columns[GrupoLimpio]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="GrupoLimpio"
+                      externalMetadataColumnId="Package\Cargar DimTerritorio\Destino DimTerritorio.Inputs[Entrada de destino de OLE DB].ExternalColumns[Grupo]"
+                      lineageId="Package\Cargar DimTerritorio\Corregir nulos y espacios.Outputs[Salida de columna derivada].Columns[GrupoLimpio]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Cargar DimTerritorio\Destino DimTerritorio.Inputs[Entrada de destino de OLE DB].ExternalColumns[TerritorioKey]"
+                      dataType="i4"
+                      name="TerritorioKey" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar DimTerritorio\Destino DimTerritorio.Inputs[Entrada de destino de OLE DB].ExternalColumns[TerritorioID]"
+                      dataType="i4"
+                      name="TerritorioID" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar DimTerritorio\Destino DimTerritorio.Inputs[Entrada de destino de OLE DB].ExternalColumns[Territorio]"
+                      dataType="wstr"
+                      length="100"
+                      name="Territorio" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar DimTerritorio\Destino DimTerritorio.Inputs[Entrada de destino de OLE DB].ExternalColumns[Pais]"
+                      dataType="wstr"
+                      length="100"
+                      name="Pais" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar DimTerritorio\Destino DimTerritorio.Inputs[Entrada de destino de OLE DB].ExternalColumns[Grupo]"
+                      dataType="wstr"
+                      length="100"
+                      name="Grupo" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Cargar DimTerritorio\Destino DimTerritorio.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\Cargar DimTerritorio\Destino DimTerritorio.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargar DimTerritorio\Destino DimTerritorio.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Cargar DimTerritorio\Destino DimTerritorio.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Cargar DimTerritorio\Destino DimTerritorio.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Cargar DimTerritorio\Destino DimTerritorio.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Cargar DimTerritorio\Origen Territorios"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+              description="Origen de OLE DB"
+              name="Origen Territorios"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+    t.TerritorioID,
+    t.Territorio,
+    p.Pais,
+    t.Grupo
+FROM dbo.Territorios t
+LEFT JOIN dbo.Paises p ON p.PaisID = t.PaisID;</property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Asignaciones entre los parámetros del comando SQL y las variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Cargar DimTerritorio\Origen Territorios.Connections[OleDbConnection]"
+                  connectionManagerID="{2EA4C284-48AC-4180-A7F7-EA6580EDBEEE}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-LV7URAU.BikeZ]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Cargar DimTerritorio\Origen Territorios.Outputs[Salida de origen de OLE DB]"
+                  name="Salida de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargar DimTerritorio\Origen Territorios.Outputs[Salida de origen de OLE DB].Columns[TerritorioID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cargar DimTerritorio\Origen Territorios.Outputs[Salida de origen de OLE DB].ExternalColumns[TerritorioID]"
+                      lineageId="Package\Cargar DimTerritorio\Origen Territorios.Outputs[Salida de origen de OLE DB].Columns[TerritorioID]"
+                      name="TerritorioID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cargar DimTerritorio\Origen Territorios.Outputs[Salida de origen de OLE DB].Columns[Territorio]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cargar DimTerritorio\Origen Territorios.Outputs[Salida de origen de OLE DB].ExternalColumns[Territorio]"
+                      length="50"
+                      lineageId="Package\Cargar DimTerritorio\Origen Territorios.Outputs[Salida de origen de OLE DB].Columns[Territorio]"
+                      name="Territorio"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cargar DimTerritorio\Origen Territorios.Outputs[Salida de origen de OLE DB].Columns[Pais]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cargar DimTerritorio\Origen Territorios.Outputs[Salida de origen de OLE DB].ExternalColumns[Pais]"
+                      length="50"
+                      lineageId="Package\Cargar DimTerritorio\Origen Territorios.Outputs[Salida de origen de OLE DB].Columns[Pais]"
+                      name="Pais"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cargar DimTerritorio\Origen Territorios.Outputs[Salida de origen de OLE DB].Columns[Grupo]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cargar DimTerritorio\Origen Territorios.Outputs[Salida de origen de OLE DB].ExternalColumns[Grupo]"
+                      length="50"
+                      lineageId="Package\Cargar DimTerritorio\Origen Territorios.Outputs[Salida de origen de OLE DB].Columns[Grupo]"
+                      name="Grupo"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Cargar DimTerritorio\Origen Territorios.Outputs[Salida de origen de OLE DB].ExternalColumns[TerritorioID]"
+                      dataType="i4"
+                      name="TerritorioID" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar DimTerritorio\Origen Territorios.Outputs[Salida de origen de OLE DB].ExternalColumns[Territorio]"
+                      dataType="wstr"
+                      length="50"
+                      name="Territorio" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar DimTerritorio\Origen Territorios.Outputs[Salida de origen de OLE DB].ExternalColumns[Pais]"
+                      dataType="wstr"
+                      length="50"
+                      name="Pais" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar DimTerritorio\Origen Territorios.Outputs[Salida de origen de OLE DB].ExternalColumns[Grupo]"
+                      dataType="wstr"
+                      length="50"
+                      name="Grupo" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Cargar DimTerritorio\Origen Territorios.Outputs[Salida de error de origen de OLE DB]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargar DimTerritorio\Origen Territorios.Outputs[Salida de error de origen de OLE DB].Columns[TerritorioID]"
+                      dataType="i4"
+                      lineageId="Package\Cargar DimTerritorio\Origen Territorios.Outputs[Salida de error de origen de OLE DB].Columns[TerritorioID]"
+                      name="TerritorioID" />
+                    <outputColumn
+                      refId="Package\Cargar DimTerritorio\Origen Territorios.Outputs[Salida de error de origen de OLE DB].Columns[Territorio]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Cargar DimTerritorio\Origen Territorios.Outputs[Salida de error de origen de OLE DB].Columns[Territorio]"
+                      name="Territorio" />
+                    <outputColumn
+                      refId="Package\Cargar DimTerritorio\Origen Territorios.Outputs[Salida de error de origen de OLE DB].Columns[Pais]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Cargar DimTerritorio\Origen Territorios.Outputs[Salida de error de origen de OLE DB].Columns[Pais]"
+                      name="Pais" />
+                    <outputColumn
+                      refId="Package\Cargar DimTerritorio\Origen Territorios.Outputs[Salida de error de origen de OLE DB].Columns[Grupo]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Cargar DimTerritorio\Origen Territorios.Outputs[Salida de error de origen de OLE DB].Columns[Grupo]"
+                      name="Grupo" />
+                    <outputColumn
+                      refId="Package\Cargar DimTerritorio\Origen Territorios.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Cargar DimTerritorio\Origen Territorios.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Cargar DimTerritorio\Origen Territorios.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Cargar DimTerritorio\Origen Territorios.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Cargar DimTerritorio.Paths[Salida de columna derivada]"
+              endId="Package\Cargar DimTerritorio\Destino DimTerritorio.Inputs[Entrada de destino de OLE DB]"
+              name="Salida de columna derivada"
+              startId="Package\Cargar DimTerritorio\Corregir nulos y espacios.Outputs[Salida de columna derivada]" />
+            <path
+              refId="Package\Cargar DimTerritorio.Paths[Salida de origen de OLE DB]"
+              endId="Package\Cargar DimTerritorio\Corregir nulos y espacios.Inputs[Entrada de columna derivada]"
+              name="Salida de origen de OLE DB"
+              startId="Package\Cargar DimTerritorio\Origen Territorios.Outputs[Salida de origen de OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Limpiar DimTerritorio"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{5FFB7904-B775-4A28-AF57-1C9C8C531F94}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Limpiar DimTerritorio"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{5C39BE6F-5E18-4A49-ADE6-C077FF433CBF}"
+          SQLTask:SqlStatementSource="DELETE FROM dbo.DimTerritorio WHERE TerritorioKey &lt;&gt; -1;&#xA;DBCC CHECKIDENT ('dbo.DimTerritorio', RESEED, 0);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción]"
+      DTS:CreationName=""
+      DTS:DTSID="{3D78E90F-84CA-4EEA-9447-D6D4CEE8C4AF}"
+      DTS:From="Package\Limpiar DimTerritorio"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción"
+      DTS:To="Package\Cargar DimTerritorio" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<Objects
+  Version="8">
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="182,42"
+          Id="Package\Limpiar DimTerritorio"
+          TopLeft="139,55" />
+        <NodeLayout
+          Size="179,42"
+          Id="Package\Cargar DimTerritorio"
+          TopLeft="293,200" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción]"
+          TopLeft="230,97">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="152.5,103"
+              Start="0,0"
+              End="152.5,95.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,47.5"
+                    Point2="0,51.5"
+                    Point3="4,51.5" />
+                  <mssgle:LineSegment
+                    End="148.5,51.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="148.5,51.5"
+                    Point2="152.5,51.5"
+                    Point3="152.5,55.5" />
+                  <mssgle:LineSegment
+                    End="152.5,95.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Cargar DimTerritorio">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="165,42"
+          Id="Package\Cargar DimTerritorio\Origen Territorios"
+          TopLeft="214,83" />
+        <NodeLayout
+          Size="203,42"
+          Id="Package\Cargar DimTerritorio\Corregir nulos y espacios"
+          TopLeft="306,211" />
+        <EdgeLayout
+          Id="Package\Cargar DimTerritorio.Paths[Salida de origen de OLE DB]"
+          TopLeft="296.5,125">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="111,86"
+              Start="0,0"
+              End="111,78.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,39"
+                    Point2="0,43"
+                    Point3="4,43" />
+                  <mssgle:LineSegment
+                    End="107,43" />
+                  <mssgle:CubicBezierSegment
+                    Point1="107,43"
+                    Point2="111,43"
+                    Point3="111,47" />
+                  <mssgle:LineSegment
+                    End="111,78.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="183,42"
+          Id="Package\Cargar DimTerritorio\Destino DimTerritorio"
+          TopLeft="380,325" />
+        <EdgeLayout
+          Id="Package\Cargar DimTerritorio.Paths[Salida de columna derivada]"
+          TopLeft="407.5,253">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="64,72"
+              Start="0,0"
+              End="64,64.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,32"
+                    Point2="0,36"
+                    Point3="4,36" />
+                  <mssgle:LineSegment
+                    End="60,36" />
+                  <mssgle:CubicBezierSegment
+                    Point1="60,36"
+                    Point2="64,36"
+                    Point3="64,40" />
+                  <mssgle:LineSegment
+                    End="64,64.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Cargar DimTerritorio\Origen Territorios">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Cargar DimTerritorio\Destino DimTerritorio">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
