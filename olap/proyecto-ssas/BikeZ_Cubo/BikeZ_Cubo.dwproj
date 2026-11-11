@@ -6,6 +6,18 @@
     <Name>BikeZ_Cubo.database</Name>
     <FullPath>BikeZ_Cubo.database</FullPath>
   </Database>
+  <Cubes>
+    <ProjectItem>
+      <Name>BikeZ Cubo.cube</Name>
+      <FullPath>BikeZ Cubo.cube</FullPath>
+      <Dependencies>
+        <ProjectItem>
+          <Name>BikeZ Cubo.partitions</Name>
+          <FullPath>BikeZ Cubo.partitions</FullPath>
+        </ProjectItem>
+      </Dependencies>
+    </ProjectItem>
+  </Cubes>
   <Dimensions>
     <ProjectItem>
       <Name>Dim Producto.dim</Name>
