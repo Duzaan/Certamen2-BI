@@ -6,6 +6,28 @@
     <Name>BikeZ_Cubo.database</Name>
     <FullPath>BikeZ_Cubo.database</FullPath>
   </Database>
+  <Dimensions>
+    <ProjectItem>
+      <Name>Dim Producto.dim</Name>
+      <FullPath>Dim Producto.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Dim Cliente.dim</Name>
+      <FullPath>Dim Cliente.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Dim Empleado.dim</Name>
+      <FullPath>Dim Empleado.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Dim Territorio.dim</Name>
+      <FullPath>Dim Territorio.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Dim Fecha.dim</Name>
+      <FullPath>Dim Fecha.dim</FullPath>
+    </ProjectItem>
+  </Dimensions>
   <DataSources>
     <ProjectItem>
       <Name>BikeZ_DW.ds</Name>
