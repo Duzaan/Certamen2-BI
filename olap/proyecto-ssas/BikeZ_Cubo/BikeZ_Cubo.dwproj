@@ -8,36 +8,36 @@
   </Database>
   <Cubes>
     <ProjectItem>
-      <Name>BikeZ Cubo.cube</Name>
-      <FullPath>BikeZ Cubo.cube</FullPath>
+      <Name>BikeZ_Cubo.cube</Name>
+      <FullPath>BikeZ_Cubo.cube</FullPath>
       <Dependencies>
         <ProjectItem>
-          <Name>BikeZ Cubo.partitions</Name>
-          <FullPath>BikeZ Cubo.partitions</FullPath>
+          <Name>BikeZ_Cubo.partitions</Name>
+          <FullPath>BikeZ_Cubo.partitions</FullPath>
         </ProjectItem>
       </Dependencies>
     </ProjectItem>
   </Cubes>
   <Dimensions>
     <ProjectItem>
-      <Name>Dim Producto.dim</Name>
-      <FullPath>Dim Producto.dim</FullPath>
+      <Name>Cliente.dim</Name>
+      <FullPath>Cliente.dim</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>Dim Cliente.dim</Name>
-      <FullPath>Dim Cliente.dim</FullPath>
+      <Name>Producto.dim</Name>
+      <FullPath>Producto.dim</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>Dim Empleado.dim</Name>
-      <FullPath>Dim Empleado.dim</FullPath>
+      <Name>Empleado.dim</Name>
+      <FullPath>Empleado.dim</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>Dim Territorio.dim</Name>
-      <FullPath>Dim Territorio.dim</FullPath>
+      <Name>Territorio.dim</Name>
+      <FullPath>Territorio.dim</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>Dim Fecha.dim</Name>
-      <FullPath>Dim Fecha.dim</FullPath>
+      <Name>Fecha.dim</Name>
+      <FullPath>Fecha.dim</FullPath>
     </ProjectItem>
   </Dimensions>
   <DataSources>
