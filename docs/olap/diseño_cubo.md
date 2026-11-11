@@ -9,7 +9,7 @@ Origen: base `BikeZ_DW`. Proyecto: `olap/proyecto-ssas`. Base de datos de Analys
 | Fecha (rol doble: Fecha de Venta y Fecha de Envío) | Calendario: Año > Trimestre > Mes > Fecha | Consulta con nombre que excluye el registro "Desconocido"; claves de texto únicas (AAAA-TN, AAAA-MM) |
 | Producto | Categoría > Producto | Incluye "Sin categoría" |
 | Cliente | Tipo de cliente > Cliente | Separa "Nombre registrado" de "Sin nombre registrado" |
-| Vendedor | Cargo > Vendedor | Incluye "Sin vendedor" |
+| Empleado (vendedor) | Cargo > Empleado | Incluye "Sin empleado" |
 | Territorio | Grupo > País > Territorio | |
 
 ## Medidas
