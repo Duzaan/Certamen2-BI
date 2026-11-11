@@ -98,6 +98,8 @@ Proyecto de Visual Studio `etl/proyecto-ssis/BikeZ_ETL` (SSIS), que carga `BikeZ
 | `Load_FactVentas` | Une ventas y detalle, busca claves sustitutas (Lookup) y calcula `VentaTotal` y `DiasEnvio` |
 | `Master_BikeZ_ETL` | Orquesta la ejecución completa en el orden correcto |
 
+Nota: `ETL_Rechazos` queda reservada para registrar rechazos; el diseño asigna la clave -1 para no perder ventas.
+
 Transformaciones y calidad de datos: columnas derivadas, `TRIM` y `ISNULL`, búsquedas con asignación de clave −1, carga repetible (limpieza previa y reinicio de claves).
 
 ### Validación de la carga

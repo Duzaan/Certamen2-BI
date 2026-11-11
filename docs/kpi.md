@@ -10,3 +10,8 @@
 | 6 | Ventas por cliente | Σ ventas agrupadas por cliente | Identifica clientes clave y el grado de concentración de los ingresos. |
 | 7 | Participación por territorio y país | Ventas del territorio ÷ Ventas totales | Orienta la inversión hacia las zonas de mayor rendimiento. |
 | 8 | Tiempo promedio de envío | Promedio de (FechaEnvio − Fecha), en días | Mide la eficiencia logística y la calidad del servicio. |
+
+## Notas de calidad de datos
+
+- **KPI 5 (ventas por vendedor):** el 87,9 % de las ventas (27.658) no tiene vendedor asignado y concentra el 26,6 % del ingreso. Se presenta siempre con la categoría "Sin vendedor".
+- **KPI 6 (ventas por cliente):** los clientes sin nombre (9.546 de 19.820) concentran el 82,2 % del ingreso, por lo que se analizan como un grupo propio.
