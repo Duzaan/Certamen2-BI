@@ -117,11 +117,34 @@ Consultas en `database/scripts/validacion_etl.sql`; capturas en `docs/evidencias
 
 ## Cubo OLAP - Fase 2
 
-Pendiente (Fase 2).
+Proyecto SSAS multidimensional `olap/proyecto-ssas/BikeZ_Cubo` (base `BikeZ_Cubo`, cubo `BikeZ Cubo`) construido sobre `BikeZ_DW`. Diseño detallado en `docs/olap/diseno-cubo.md`.
+
+| Dimensión | Jerarquía |
+|---|---|
+| Fecha (rol doble: venta y envío) | Año > Trimestre > Mes > Fecha |
+| Producto | Categoría > Producto |
+| Cliente | Tipo de cliente > Cliente |
+| Empleado (vendedor) | Cargo > Empleado |
+| Territorio | Grupo > País > Territorio |
+
+Medidas: Cantidad, Venta Total, Días de envío, Líneas de venta y Cantidad de ventas (recuento distinto de `VentaID`, en su propio grupo).
+
+Miembros calculados: Ticket Promedio, Precio Promedio, Días de envío promedio, Venta Total Año Anterior, Crecimiento Anual %, Crecimiento Mensual % y Participación %. KPI de SSAS: "Crecimiento anual de ventas".
+
+Validación: Venta Total 110.373.889,31; 274.914 unidades; 121.317 líneas; 31.465 ventas. Coinciden con el almacén, y la conciliación por producto y territorio da 0 diferencias.
 
 ## Dashboard Power BI - Fase 2
 
-Pendiente (Fase 2).
+`powerbi/dashboard.pbix`, con conexión en vivo al cubo (`DESKTOP-LV7URAU`, base `BikeZ_Cubo`). Evidencia: `docs/evidencias/dashboard.pdf`.
+
+| Página | Contenido | KPI |
+|---|---|---|
+| 1. Resumen ejecutivo | Ventas, unidades, ticket, crecimiento anual y mensual | 1, 3 y 4 |
+| 2. Productos | Unidades por categoría y top 10 de productos | 2 |
+| 3. Clientes y vendedores | Por tipo de cliente, cliente y vendedor | 3, 5 y 6 |
+| 4. Territorios y logística | Participación por territorio y país; días de envío | 7 y 8 |
+
+Limitación: al ser una conexión en vivo, el archivo requiere el cubo implementado en el servidor.
 
 ## Avances por fase
 
@@ -132,8 +155,8 @@ Pendiente (Fase 2).
 | Fase 1 | Implementación del modelo en SQL Server (`BikeZ_DW`) | Completado |
 | Fase 1 | Proceso ETL en SSIS y validación de la carga | Completado (ver sección ETL) |
 | Fase 1 | Backup de la base dimensional con datos cargados | Completado |
-| Fase 2 | Cubo OLAP (SSAS) | Pendiente |
-| Fase 2 | Dashboard en Power BI | Pendiente |
+| Fase 2 | Cubo OLAP (SSAS) | Completado |
+| Fase 2 | Dashboard en Power BI | Completado |
 
 ## Tecnologías utilizadas
 
@@ -142,6 +165,9 @@ Pendiente (Fase 2).
 | SQL Server 2019 | Base transaccional (`BikeZ`) y base dimensional (`BikeZ_DW`) |
 | SQL Server Management Studio | Scripts, validaciones y respaldos |
 | Visual Studio 2019 + SSIS Projects | Proceso ETL |
+| SQL Server Analysis Services | Construcción y procesamiento del cubo OLAP (BikeZ_Cubo), jerarquías y medidas |
+| Power BI Desktop | Conexión en vivo (Live Connection) y visualización de los 8 KPI en 4 páginas |
+| MDX | Cálculo de miembros (Ticket Promedio, crecimientos) y consultas de validación |
 | Git y GitHub | Control de versiones y trazabilidad |
 
 ## Estructura del repositorio
